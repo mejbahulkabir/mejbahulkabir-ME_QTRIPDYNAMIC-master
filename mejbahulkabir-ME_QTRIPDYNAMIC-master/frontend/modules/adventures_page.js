@@ -198,58 +198,58 @@ function filterByCategory(list, categoryList) {
 
 //   return filteredAdventures;
 // }
-// function filterFunction(list, filters) {
-//   // TODO: MODULE_FILTERS
-//   // 1. Handle the 3 cases detailed in the comments above and return the filtered list of adventures
-//   // 2. Depending on which filters are needed, invoke the filterByDuration() and/or filterByCategory() methods
-
-//   console.log("Filter by", filters);
-//   console.log("Filter on", list);
-
-//   // Check if filters are empty, return the original list if true
-//   if (!filters || (filters.category.length === 0 && filters.duration.low === 0 && filters.duration.high === 0)) {
-//     return list;
-//   }
-
-//   let filteredAdventures = list.filter((item) => {
-//     // Check for category filter
-//     const passesCategoryFilter = filters.category.length === 0 || filters.category.includes(item.category);
-
-//     // Check for duration filter
-//     const passesDurationFilter =
-//       filters.duration.high === 0 || (item.duration >= filters.duration.low && item.duration <= filters.duration.high);
-
-//     return passesCategoryFilter && passesDurationFilter;
-//   });
-
-//   console.log('Filtered Adventures:', filteredAdventures.map((a) => a.id));
-
-//   return filteredAdventures;
-// }
-
 function filterFunction(list, filters) {
+  // TODO: MODULE_FILTERS
+  // 1. Handle the 3 cases detailed in the comments above and return the filtered list of adventures
+  // 2. Depending on which filters are needed, invoke the filterByDuration() and/or filterByCategory() methods
+
+  console.log("Filter by", filters);
+  console.log("Filter on", list);
+
   // Check if filters are empty, return the original list if true
-  if (!filters || (filters.category.length === 0 && filters.duration === "")) {
+  if (!filters || (filters.category.length === 0 && filters.duration.low === 0 && filters.duration.high === 0)) {
     return list;
   }
 
-  // Parse the duration filter
-  const [lowDuration, highDuration] = filters.duration.split('-').map(Number);
-
-  // Filter the list based on category and duration filters
   let filteredAdventures = list.filter((item) => {
     // Check for category filter
     const passesCategoryFilter = filters.category.length === 0 || filters.category.includes(item.category);
 
     // Check for duration filter
-    const passesDurationFilter = filters.duration === "" ||
-      (lowDuration <= item.duration && item.duration <= highDuration);
+    const passesDurationFilter =
+      filters.duration.high === 0 || (item.duration >= filters.duration.low && item.duration <= filters.duration.high);
 
     return passesCategoryFilter && passesDurationFilter;
   });
 
+  console.log('Filtered Adventures:', filteredAdventures.map((a) => a.id));
+
   return filteredAdventures;
 }
+
+// function filterFunction(list, filters) {
+//   // Check if filters are empty, return the original list if true
+//   if (!filters || (filters.category.length === 0 && filters.duration === "")) {
+//     return list;
+//   }
+
+//   // Parse the duration filter
+//   const [lowDuration, highDuration] = filters.duration.split('-').map(Number);
+
+//   // Filter the list based on category and duration filters
+//   let filteredAdventures = list.filter((item) => {
+//     // Check for category filter
+//     const passesCategoryFilter = filters.category.length === 0 || filters.category.includes(item.category);
+
+//     // Check for duration filter
+//     const passesDurationFilter = filters.duration === "" ||
+//       (lowDuration <= item.duration && item.duration <= highDuration);
+
+//     return passesCategoryFilter && passesDurationFilter;
+//   });
+
+//   return filteredAdventures;
+// }
 
 
 
